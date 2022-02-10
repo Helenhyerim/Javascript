@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 태그속에 결과물을 넣어주는 innerHTML 사용하기</title>
+
+<script type="text/javascript">
+	window.onload = function() {
+		// 웹브라우저에 페이지 로딩이 끝난 후 발생하는 이벤트
+		
+		document.getElementById("h1").innerHTML = "h1 태그입니다";
+		document.getElementById("p").innerHTML = "p 태그입니다";
+		// 그래서 순서적으로는 body태그보다 앞서있지만 body가 끝난 후 실행되기때문에 정상작동된다
+	}
+</script>
+
+</head>
+<body>
+
+<h1 id="h1"></h1>
+<p id="p"></p>
+
+
+
+
+</body>
+</html>
