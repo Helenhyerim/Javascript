@@ -365,9 +365,24 @@
 		let minPrice = document.getElementById("minPrice").value;
 		let maxPrice = document.getElementById("maxPrice").value;
 		
+		if(minPrice.trim() == "" || maxPrice.trim() == "") {
+			document.getElementById("display_search_fruit").innerHTML = `<span style='color:red;'>최저가격 및 최고가격을 입력하세요!!</span>`; 
+			return;  // 종료 
+		}
+		
 		minPrice = Number(minPrice);
 		maxPrice = Number(maxPrice);
-				
+		
+		if(minPrice*0 != 0 || maxPrice*0 != 0) {
+			document.getElementById("display_search_fruit").innerHTML = `<span style='color:red;'>최저가격 및 최고가격은 숫자로만 입력하세요!!</span>`; 
+			return;  // 종료 
+		}
+		
+		if( minPrice > maxPrice ) {
+			document.getElementById("display_search_fruit").innerHTML = `<span style='color:red;'>최저가격은 최고가격 보다 같거나 작아야 합니다!!</span>`; 
+			return;  // 종료
+		}
+		
 	//	const fruit_Arr_search = fruit_Arr_6.filter( item => { if(minPrice <= item.price && item.price <= maxPrice) return item;} );
 	//  또는 
 	    const fruit_Arr_search = fruit_Arr_6.filter( item => minPrice <= item.price && item.price <= maxPrice );
@@ -383,12 +398,101 @@
 	    		html += `<li>${item.name} ${item.price}원</li>`;
 	    	}
 	    }
-	   
+	    
 	    document.getElementById("display_search_fruit").innerHTML = html;
 	
 	});
 	
 	
-</script>
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	// ---- ***** 배열명.findIndex() ***** ---- //
+	// ES6에서 새로 도입된 메소드로서 판별함수의 조건에 만족하는 배열요소가 있으면 첫번째 배열요소의 인덱스번호만 리턴 시켜주고 끝내고, 
+	// 판별함수의 조건에 만족하는 배열요소가 없으면 -1 이 나온다.
+	
+/*	
+	const index = fruit_Arr_6.findIndex( function(item, index, array) { 
+		                                       if(item.price > 1000)
+		                                       return item;} );
+*/
+//  또는      
+    let index = fruit_Arr_6.findIndex(item => item.price > 1000);
+    
+	console.log("index : " + index); // index : 1
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	// ---- ***** 배열명.indexOf(찾을요소, 검색출발인덱스번호) ***** ---- //
+	// 배열명에서 찾을요소와 일치하는 배열요소가 있으면 첫번째 배열요소의 인덱스번호만 리턴 시켜주고 끝내고, 배열요소가 없으면 -1 이 나온다.
+	
+	const subject_arr = ["자바","오라클","HTML","CSS","javascript","오라클","자바","HTML","오라클"];
+	
+	index = subject_arr.indexOf("오라클", 0); // 검색출발인덱스번호를 생략하면 0 으로 된다. 
+	console.log(`index 번호 : ${index}`); // index 번호 : 1
+	
+	index = subject_arr.indexOf("안녕하세요", 0); // 검색출발인덱스번호를 생략하면 0 으로 된다. 
+	console.log(`index 번호 : ${index}`); // index 번호 : -1 
+	
+	
+	// 배열요소 "오라클" 의 모든 index 번호를 찾아서 배열로 만들기 //
+	const index_arr = [];
+	index = subject_arr.indexOf("오라클"); //  1 
+	while(index != -1) {
+		index_arr.push(index); // [1] [1,5] [1,5,8]
+		index = subject_arr.indexOf("오라클", index+1); // 5  8  -1
+	}
+	
+	console.log(index_arr);  // (3) [1, 5, 8]
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	// ---- ***** 배열명.some() ***** ---- //
+	// 배열명에서 판별함수의 조건에 만족하는 배열요소가 하나라도 있으면 true 를 리턴 시켜주고 조건검사를 중지한다.
+	// 배열명에서 판별함수의 조건에 만족하는 배열요소가 하나라도 없으면 false 를 리턴 시켜준다.
+	
+	// 배열 fruit_Arr_6 에서 price 가 2000 이상인 배열요소가 있는지 검사한다.  
+	let bool = fruit_Arr_6.some( function(item, index, array)
+										{ if(item.price >= 2000) {
+                                            console.log(item.name); // 딸기
+                                            return true;
+                                   		     } 
+	                                     });
+	
+	console.log(bool); // true
+	
+	bool = fruit_Arr_6.some( item => item.price >= 2000);
+	console.log(bool); // true
+	
+	
+	// ---- ***** 배열명.every() ***** ---- //
+	// 배열명에서 판별함수의 조건에 만족하는 배열요소가 하나라도 없으면 false 를 리턴 시켜주고 조건검사를 중지한다.
+	// 배열명에서 판별함수의 조건에 만족하는 배열요소가 모두 존재해야만 true 를 리턴 시켜준다.
+	
+	console.log("=== 배열명.every() 알아보기 ===");
+	
+	// 배열 fruit_Arr_6 에서 price 가 모두 1000 이상인지 검사한다.  
+	
+	bool = fruit_Arr_6.every( item => { if(item.price >= 1000) {
+                                              console.log(item.name);
+                                              return true;
+	                                         } 
+											else {
+												console.log(item.name + "의 가격은 1000 미만입니다.");
+											}
+	                                     });
+	
+	console.log(bool);
+	
+	
+	
+	
+	
+
+	
 </body>
 </html>
