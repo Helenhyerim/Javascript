@@ -77,9 +77,9 @@
 	이렇게 각각 다는것보다 한방에 하는 방법은 아래에
 */
 	
-	
 	const display_error = document.querySelector("div#display_error");
 	display_error.style.display = "none"; // 처음에는 보이지 말라는 스타일 적용
+	
 	function func_calculate(target) { // 넘어온 target 을 받는다, e. 을 지운다.
 		
 		let price = target.parentNode.innerText; 
@@ -186,11 +186,13 @@
 		
 	});
 	
+	
+	
 
 	tbl.addEventListener("keyup", function(e){func_calculate(e.target);}); 
 	// 키보드에서 손을 떼는순간 함수 호출, 이벤트가 발생된(키보드에서 손 뗀) 곳을 타켓으로 넘겨준다.
 	// tbl.addEventListener("change", function(e){func_calculate(e.target);}); 
-	// 원래 이렇게 간단하게 하는건데, 공부를 위해 위의 내용처럼 해두겠다.
+	// 원래 메소드로 만들어서 이렇게 간단하게 하는건데, 공부를 위해 위의 내용처럼 해두겠다.
 	
 </script>
 
