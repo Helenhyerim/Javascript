@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+div#container {
+	/* border: solid 1px gray; */
+	width: 80%;
+	margin: 20px auto;
+	
+}
+
+h2 {
+	color:green;
+	text-decoration: underline;
+	margin: 20px 0;
+}
+
+table {
+	width: 80%;
+	border: solid 1px gray;
+	border-collapse: collapse;	
+}
+
+td {
+	border: solid 1px gray;
+	padding: 10px;
+}
+
+tr {
+	line-height: 200%; /* 평상시보다 2배 띄워라  */
+}
+
+input {
+	line-height: 150%;
+}
+
+button {
+	border: solid 1px gray;
+	width: 60px;
+	height: 30px; 
+	font-size: 12pt;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#container > table > tbody > tr:nth-child(7){
+	text-align: center;
+}
+
+#container > table > tbody > tr > td.title {
+	background-color: ivory;
+	color: #ff6600;
+	text-align: right;
+	font-weight: bold;
+}
+
+#container > table > tbody > tr:nth-child(6) > td:nth-child(1) > label {
+	font-size: 8pt;
+	font-weight: normal;
+	font-style: italic;
+	color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
