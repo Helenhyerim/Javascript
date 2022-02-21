@@ -168,7 +168,7 @@
 		function func_currentDate_loop() {
 
 			document.querySelector("td#currentDate").innerHTML = func_currentDate();
-			setTimeout(func_currentDate_loop(), 1000);
+			setTimeout(func_currentDate_loop, 1000);
 			// 1000 밀리초(1초) 후에 func_currentDate_loop() 함수를 실행하라는 말이다.
 		}
 
