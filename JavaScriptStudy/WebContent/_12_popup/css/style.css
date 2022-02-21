@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+div#container {
+	display: flex; /* 가운데로 정렬됨 */
+	/* border: solid 1px red; */
+	width: 80%;
+	margin: 20px auto;
+}
+
+div#display {
+	/* border: solid 1px blue; */
+	width: 80%;
+	margin: auto; /*바깥을 flex 주고, 안쪽을 auto 해주면 가운데 온다  */
+	
+}
+
+table#tbl {
+	/* border: solid 1px gray; */
+	width: 100%;
+	border-collapse: collapse;
+	
+}
+
+th, td{
+	border: solid 1px gray;
+	
+}
+
+th {
+	padding: 1%;
+}
+td {
+	padding: 2%;
+}
+
+#tbl > thead > tr:nth-child(1) > th {
+	color: tomato;
+	font-size: 20pt;
+	border: none;
+	line-height: 250%;
+}
+
+#tbl > tbody > tr > td:nth-child(1) > img {
+	width: 30%;
+	cursor: pointer;
+}
+
+#tbl > tbody > tr > td:last-child {
+	color: blue;
+	font-size: 12pt;
+	text-align: right;
+	
+}
+
+#tbl > tfoot > tr > td:last-child {
+	color: red;
+	font-size: 12pt;
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
